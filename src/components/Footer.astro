@@ -1,0 +1,20 @@
+---
+import { getLangFromUrl, useTranslations, localizedPath } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-[color:var(--color-brand-line)]">
+  <div class="mx-auto max-w-6xl px-6 lg:px-10 py-8 flex flex-col sm:flex-row justify-between gap-4 text-xs text-[color:var(--color-brand-muted)]">
+    <div>
+      © {year} Vlekkeloos · {t('footer.kvk')} · {t('footer.rights')}
+    </div>
+    <div class="flex gap-4">
+      <a href={localizedPath(lang, '/contact')} class="hover:text-[color:var(--color-brand-ink)] transition-colors">
+        {t('nav.contact')}
+      </a>
+    </div>
+  </div>
+</footer>

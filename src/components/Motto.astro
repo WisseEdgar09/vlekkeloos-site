@@ -1,0 +1,15 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section aria-label="Vlekkeloos motto" class="border-t border-[color:var(--color-brand-line)]">
+  <div class="mx-auto max-w-4xl px-6 lg:px-10 py-20 md:py-28 text-center">
+    <p class="font-display text-2xl md:text-3xl lg:text-4xl leading-snug text-[color:var(--color-brand-ink)]">
+      <span class="italic-style">"{t('motto.text1')}</span>
+      <span class="text-[color:var(--color-brand-blue)]">{t('motto.text2')}"</span>
+    </p>
+  </div>
+</section>

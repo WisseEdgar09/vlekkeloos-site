@@ -1,0 +1,67 @@
+---
+import { getLangFromUrl, useTranslations, localizedPath } from '../i18n/ui';
+import LangSwitch from './LangSwitch.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<header class="border-b border-[color:var(--color-brand-line)]">
+  <div class="mx-auto max-w-6xl px-6 lg:px-10 py-5 flex items-center justify-between">
+    <a
+      href={localizedPath(lang, '/')}
+      class="font-display text-xl tracking-tight"
+      aria-label="Vlekkeloos home"
+    >
+      vlekkeloos
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8 text-sm">
+      <a href={localizedPath(lang, '/#diensten')} class="hover:text-[color:var(--color-brand-blue)] transition-colors">
+        {t('nav.services')}
+      </a>
+      <a href={localizedPath(lang, '/#werk')} class="hover:text-[color:var(--color-brand-blue)] transition-colors">
+        {t('nav.work')}
+      </a>
+      <a href={localizedPath(lang, '/#over-ons')} class="hover:text-[color:var(--color-brand-blue)] transition-colors">
+        {t('nav.about')}
+      </a>
+      <a href={localizedPath(lang, '/contact')} class="hover:text-[color:var(--color-brand-blue)] transition-colors">
+        {t('nav.contact')}
+      </a>
+      <LangSwitch />
+    </nav>
+
+    <button
+      type="button"
+      class="md:hidden text-sm font-medium"
+      aria-label={t('nav.menu')}
+      data-mobile-toggle
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <line x1="4" y1="8" x2="20" y2="8" />
+        <line x1="4" y1="16" x2="20" y2="16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu (toggled by tiny JS below) -->
+  <div class="md:hidden hidden px-6 pb-6 space-y-4 text-sm" data-mobile-menu>
+    <a href={localizedPath(lang, '/#diensten')} class="block">{t('nav.services')}</a>
+    <a href={localizedPath(lang, '/#werk')} class="block">{t('nav.work')}</a>
+    <a href={localizedPath(lang, '/#over-ons')} class="block">{t('nav.about')}</a>
+    <a href={localizedPath(lang, '/contact')} class="block">{t('nav.contact')}</a>
+    <div class="pt-2 border-t border-[color:var(--color-brand-line)]">
+      <LangSwitch />
+    </div>
+  </div>
+</header>
+
+<script>
+  // Tiny inline progressive enhancement — toggles mobile menu visibility.
+  const btn = document.querySelector<HTMLButtonElement>('[data-mobile-toggle]');
+  const menu = document.querySelector<HTMLElement>('[data-mobile-menu]');
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+</script>

@@ -1,0 +1,53 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const stats = [
+  { value: t('founders.stat1.value'), label: t('founders.stat1.label') },
+  { value: t('founders.stat2.value'), label: t('founders.stat2.label') },
+  { value: t('founders.stat3.value'), label: t('founders.stat3.label') },
+];
+---
+
+<section id="over-ons" class="bg-[color:var(--color-brand-tint)]">
+  <div class="mx-auto max-w-6xl px-6 lg:px-10 py-16 md:py-24">
+    <div class="grid gap-10 md:gap-16 md:grid-cols-2 items-center">
+      <div>
+        <p class="eyebrow">{t('founders.eyebrow')}</p>
+        <h2 class="font-display mt-4 text-3xl md:text-4xl lg:text-5xl text-[color:var(--color-brand-ink)]">
+          {t('founders.title')}
+        </h2>
+        <p class="mt-5 max-w-md text-[color:var(--color-brand-ink)]/85">
+          {t('founders.body')}
+        </p>
+
+        <dl class="mt-10 grid grid-cols-3 gap-4 max-w-md">
+          {
+            stats.map((s) => (
+              <div>
+                <dt class="font-display text-3xl text-[color:var(--color-brand-blue)]">
+                  {s.value}
+                </dt>
+                <dd class="mt-1 text-xs text-[color:var(--color-brand-ink)]/75">
+                  {s.label}
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+
+      <!-- Placeholder portraits — swap for real photos when shoot is done -->
+      <div class="grid grid-cols-2 gap-3 md:gap-4">
+        <div class="aspect-[3/4] bg-[color:var(--color-brand-canvas)] rounded-[12px] flex items-end p-4 text-xs text-[color:var(--color-brand-muted)]">
+          Founder 1
+        </div>
+        <div class="aspect-[3/4] bg-[color:var(--color-brand-canvas)] rounded-[12px] flex items-end p-4 text-xs text-[color:var(--color-brand-muted)] mt-6 md:mt-10">
+          Founder 2
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

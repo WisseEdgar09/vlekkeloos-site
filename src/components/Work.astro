@@ -1,0 +1,65 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+/**
+ * Placeholder clips — replace each with a real Instagram embed or .mp4 thumb
+ * once content exists. Keep a 3:4 aspect ratio for consistency.
+ */
+const clips = [
+  { color: 'ink' },
+  { color: 'blue' },
+  { color: 'ink' },
+  { color: 'blue' },
+];
+---
+
+<section id="werk" class="border-t border-[color:var(--color-brand-line)]">
+  <div class="mx-auto max-w-6xl px-6 lg:px-10 py-16 md:py-24">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+      <div>
+        <p class="eyebrow">{t('work.eyebrow')}</p>
+        <h2 class="font-display mt-3 text-3xl md:text-4xl lg:text-5xl">
+          {t('work.title')}
+        </h2>
+      </div>
+      <a
+        href="https://instagram.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-sm font-medium text-[color:var(--color-brand-blue)] hover:underline self-start sm:self-auto"
+      >
+        {t('work.cta')} →
+      </a>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+      {
+        clips.map((c) => (
+          <div
+            class:list={[
+              'aspect-[3/4] rounded-[12px] flex items-center justify-center',
+              c.color === 'ink'
+                ? 'bg-[color:var(--color-brand-ink)]'
+                : 'bg-[color:var(--color-brand-blue)]',
+            ]}
+          >
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="rgba(255,255,255,0.55)"
+              stroke-width="1.5"
+              aria-hidden="true"
+            >
+              <polygon points="6,4 20,12 6,20" />
+            </svg>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

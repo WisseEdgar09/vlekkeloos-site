@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ────────────────────────────────────────────────────────────────
+   Vlekkeloos design tokens
+   Edit these to evolve the brand. Everything downstream uses them.
+   ──────────────────────────────────────────────────────────────── */
+:root {
+  /* Colors — sampled directly from the logo (#0078B7) and complementary */
+  --color-brand-blue:       #0078B7;              /* primary — buttons, accents, eyebrow */
+  --color-brand-blue-dark:  #005A8C;              /* hover/active state for blue */
+  --color-brand-tint:       #E6F3FB;              /* light blue surfaces (founders block) */
+  --color-brand-ink:        #0A1929;              /* primary text — softer than pure black */
+  --color-brand-canvas:     #FAF7F2;              /* warm cream page background */
+  --color-brand-amber:      #F4B942;              /* accent — final CTA, sparingly */
+  --color-brand-amber-ink:  #4A2E00;              /* text on amber background */
+  --color-brand-muted:      #5F5E5A;              /* secondary text */
+  --color-brand-line:       rgba(10, 25, 41, 0.10); /* subtle dividers */
+
+  /* Typography */
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-sans:    "Inter Variable", "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Layout */
+  --radius-card: 12px;
+  --radius-btn:  10px;
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Base styles
+   ──────────────────────────────────────────────────────────────── */
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-brand-canvas);
+  color: var(--color-brand-ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "cv11", "ss01";
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Display headings use Bricolage with tight tracking */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.025em;
+  line-height: 1.04;
+  font-weight: 500;
+}
+
+/* Eyebrow label — small caps-style section markers */
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  font-weight: 500;
+  color: var(--color-brand-blue);
+  text-transform: uppercase;
+}
+
+/* Skip link for keyboard users */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--color-brand-ink);
+  color: var(--color-brand-canvas);
+  padding: 12px 16px;
+  z-index: 100;
+  border-radius: 0 0 var(--radius-btn) 0;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+/* Focus states — visible for keyboard users only */
+:focus-visible {
+  outline: 2px solid var(--color-brand-blue);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Button primitives */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--color-brand-blue);
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 14px 22px;
+  border-radius: var(--radius-btn);
+  transition: background 150ms ease;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  background: var(--color-brand-blue-dark);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--color-brand-ink);
+  border: 1px solid var(--color-brand-ink);
+  font-weight: 500;
+  font-size: 14px;
+  padding: 13px 21px;
+  border-radius: var(--radius-btn);
+  transition: background 150ms ease, color 150ms ease;
+  text-decoration: none;
+}
+.btn-secondary:hover {
+  background: var(--color-brand-ink);
+  color: var(--color-brand-canvas);
+}
+
+.btn-amber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--color-brand-amber);
+  color: var(--color-brand-amber-ink);
+  font-weight: 500;
+  font-size: 14px;
+  padding: 14px 24px;
+  border-radius: var(--radius-btn);
+  transition: filter 150ms ease;
+  text-decoration: none;
+}
+.btn-amber:hover {
+  filter: brightness(0.95);
+}
+
+/* Subtle reveal animation on page load for the hero */
+@keyframes vlek-rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.vlek-rise {
+  animation: vlek-rise 600ms ease-out both;
+}
+.vlek-rise-delay-1 { animation-delay: 100ms; }
+.vlek-rise-delay-2 { animation-delay: 200ms; }
+.vlek-rise-delay-3 { animation-delay: 300ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .vlek-rise { animation: none; }
+  html { scroll-behavior: auto; }
+}

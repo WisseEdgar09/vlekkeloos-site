@@ -1,0 +1,71 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const audiences = [
+  {
+    key: 'municipalities' as const,
+    title: t('audiences.municipalities.title'),
+    body: t('audiences.municipalities.body'),
+    icon: 'building',
+  },
+  {
+    key: 'business' as const,
+    title: t('audiences.business.title'),
+    body: t('audiences.business.body'),
+    icon: 'briefcase',
+  },
+  {
+    key: 'private' as const,
+    title: t('audiences.private.title'),
+    body: t('audiences.private.body'),
+    icon: 'home',
+  },
+];
+---
+
+<section id="diensten" class="border-t border-[color:var(--color-brand-line)]">
+  <div class="mx-auto max-w-6xl px-6 lg:px-10 py-16 md:py-24">
+    <p class="eyebrow">{t('audiences.eyebrow')}</p>
+    <h2 class="font-display mt-4 text-3xl md:text-4xl lg:text-5xl max-w-2xl">
+      {t('audiences.title')}
+    </h2>
+
+    <div class="mt-12 grid gap-4 md:grid-cols-3">
+      {
+        audiences.map((a) => (
+          <article class="bg-white rounded-[12px] border border-[color:var(--color-brand-line)] p-6 md:p-7 transition-all hover:border-[color:var(--color-brand-blue)]">
+            <div class="text-[color:var(--color-brand-blue)]">
+              {a.icon === 'building' && (
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <path d="M3 21V7l9-4 9 4v14M9 9h.01M15 9h.01M9 13h.01M15 13h.01M9 17h.01M15 17h.01" />
+                </svg>
+              )}
+              {a.icon === 'briefcase' && (
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <rect x="3" y="7" width="18" height="13" rx="2" />
+                  <path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" />
+                  <line x1="3" y1="13" x2="21" y2="13" />
+                </svg>
+              )}
+              {a.icon === 'home' && (
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <path d="M3 11l9-8 9 8M5 10v10h14V10" />
+                </svg>
+              )}
+            </div>
+
+            <h3 class="mt-5 font-medium text-lg text-[color:var(--color-brand-ink)]">
+              {a.title}
+            </h3>
+            <p class="mt-2 text-sm text-[color:var(--color-brand-muted)] leading-relaxed">
+              {a.body}
+            </p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

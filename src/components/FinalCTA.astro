@@ -1,0 +1,20 @@
+---
+import { getLangFromUrl, useTranslations, localizedPath } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="bg-[color:var(--color-brand-ink)] text-[color:var(--color-brand-canvas)]">
+  <div class="mx-auto max-w-4xl px-6 lg:px-10 py-20 md:py-28 text-center">
+    <h2 class="font-display text-4xl md:text-5xl lg:text-6xl text-[color:var(--color-brand-canvas)]">
+      {t('cta.title')}
+    </h2>
+    <p class="mt-4 text-[color:var(--color-brand-canvas)]/70">
+      {t('cta.body')}
+    </p>
+    <a href={localizedPath(lang, '/contact')} class="btn-amber mt-10">
+      {t('cta.button')} <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>

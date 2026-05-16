@@ -1,0 +1,59 @@
+---
+/**
+ * BaseLayout — the wrapper used by every page.
+ * Loads fonts, sets meta, renders nav + footer, and slots in page content.
+ */
+import '@fontsource-variable/inter';
+import '@fontsource/bricolage-grotesque/500.css';
+import '@fontsource/bricolage-grotesque/600.css';
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const fallbackDescription =
+  lang === 'en'
+    ? 'Cleaning, window washing and street cleaning in Leeuwarden by Vlekkeloos. Request a quote — reply within 24 hours.'
+    : 'Schoonmaak, glasbewassing en straatreiniging in Leeuwarden door Vlekkeloos. Vraag een offerte aan — reactie binnen 24 uur.';
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#0078B7" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{title}</title>
+    <meta name="description" content={description ?? fallbackDescription} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description ?? fallbackDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={lang === 'nl' ? 'nl_NL' : 'en_US'} />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">
+      {lang === 'en' ? 'Skip to content' : 'Direct naar de inhoud'}
+    </a>
+
+    <Nav />
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,48 @@
+---
+import { getLangFromUrl, defaultLang } from '../i18n/ui';
+
+const currentLang = getLangFromUrl(Astro.url);
+const otherLang = currentLang === 'nl' ? 'en' : 'nl';
+
+/**
+ * Build the URL for the same page in the other language.
+ * - From `/contact` (NL default) → `/en/contact`
+ * - From `/en/contact` → `/contact`
+ */
+const pathname = Astro.url.pathname;
+let target: string;
+if (currentLang === defaultLang) {
+  target = `/${otherLang}${pathname === '/' ? '' : pathname}`;
+} else {
+  const stripped = pathname.replace(/^\/(nl|en)/, '') || '/';
+  target = stripped;
+}
+---
+
+<div class="flex items-center gap-2 text-xs font-medium">
+  <a
+    href={currentLang === 'nl' ? Astro.url.pathname : target}
+    aria-current={currentLang === 'nl' ? 'true' : undefined}
+    class:list={[
+      'px-1.5 py-0.5 rounded transition-colors',
+      currentLang === 'nl'
+        ? 'text-[color:var(--color-brand-ink)]'
+        : 'text-[color:var(--color-brand-muted)] hover:text-[color:var(--color-brand-ink)]',
+    ]}
+  >
+    NL
+  </a>
+  <span class="text-[color:var(--color-brand-muted)]">/</span>
+  <a
+    href={currentLang === 'en' ? Astro.url.pathname : target}
+    aria-current={currentLang === 'en' ? 'true' : undefined}
+    class:list={[
+      'px-1.5 py-0.5 rounded transition-colors',
+      currentLang === 'en'
+        ? 'text-[color:var(--color-brand-ink)]'
+        : 'text-[color:var(--color-brand-muted)] hover:text-[color:var(--color-brand-ink)]',
+    ]}
+  >
+    EN
+  </a>
+</div>
