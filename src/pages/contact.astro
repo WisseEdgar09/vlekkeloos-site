@@ -17,24 +17,11 @@ const t = useTranslations(lang);
         {t('contact.body')}
       </p>
 
-      <!--
-        Form submission:
-        - Default uses Netlify Forms (works automatically when deployed to Netlify).
-        - For Vercel/other hosts: replace the form's `action` with a Formspree URL
-          (e.g. action="https://formspree.io/f/YOUR_ID") and remove the
-          `data-netlify` attribute + hidden input.
-      -->
       <form
-        name="offerte"
+        action="https://formspree.io/f/xkoeaaab"
         method="POST"
-        data-netlify="true"
-        netlify-honeypot="bot-field"
         class="mt-12 grid gap-6"
       >
-        <input type="hidden" name="form-name" value="offerte" />
-        <p class="hidden">
-          <label>Don't fill this out: <input name="bot-field" /></label>
-        </p>
 
         <div class="grid md:grid-cols-2 gap-6">
           <div class="grid gap-2">
