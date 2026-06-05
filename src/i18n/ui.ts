@@ -62,6 +62,8 @@ export const ui = {
     'cta.body': 'Reactie binnen 24 uur. Vrijblijvende offerte.',
     'cta.button': 'Vraag offerte aan',
 
+    'founders.role': 'Mede-oprichter',
+
     'footer.kvk': 'KvK 96701900',
     'footer.rights': 'Alle rechten voorbehouden',
     'footer.email': 'info@vlekkeloos-leeuwarden.nl',
@@ -133,6 +135,8 @@ export const ui = {
     'cta.title': 'Ready for clean work?',
     'cta.body': 'Reply within 24 hours. Quote with no obligation.',
     'cta.button': 'Request a quote',
+
+    'founders.role': 'Co-founder',
 
     'footer.kvk': 'KvK 96701900',
     'footer.rights': 'All rights reserved',
