@@ -64,6 +64,7 @@ export const ui = {
 
     'footer.kvk': 'KvK 96701900',
     'footer.rights': 'Alle rechten voorbehouden',
+    'footer.email': 'info@vlekkeloos-leeuwarden.nl',
 
     'contact.title': 'Vraag een offerte aan',
     'contact.body':
@@ -135,6 +136,7 @@ export const ui = {
 
     'footer.kvk': 'KvK 96701900',
     'footer.rights': 'All rights reserved',
+    'footer.email': 'info@vlekkeloos-leeuwarden.nl',
 
     'contact.title': 'Request a quote',
     'contact.body':
