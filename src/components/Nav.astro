@@ -12,10 +12,11 @@ const t = useTranslations(lang);
   <div class="mx-auto max-w-6xl pl-4 pr-6 lg:pl-6 lg:pr-10 py-5 flex items-center justify-between">
     <a
       href={localizedPath(lang, '/')}
-      class="flex items-center"
+      class="flex flex-col items-start"
       aria-label="Vlekkeloos home"
     >
-      <Image src={logo} alt="Vlekkeloos" height={160} class="h-16 md:h-20 w-auto" />
+      <Image src={logo} alt="Vlekkeloos" height={128} class="h-14 md:h-16 w-auto" />
+      <span class="text-xs text-[color:var(--color-brand-muted)] tracking-tight -mt-1">Vlekkeloos · Leeuwarden</span>
     </a>
 
     <nav class="hidden md:flex items-center gap-8 text-sm">
