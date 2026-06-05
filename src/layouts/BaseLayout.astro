@@ -3,6 +3,7 @@
  * BaseLayout — the wrapper used by every page.
  * Loads fonts, sets meta, renders nav + footer, and slots in page content.
  */
+import Analytics from '@vercel/analytics/astro';
 import '@fontsource-variable/inter';
 import '@fontsource/bricolage-grotesque/500.css';
 import '@fontsource/bricolage-grotesque/600.css';
@@ -55,5 +56,6 @@ const fallbackDescription =
     </main>
 
     <Footer />
+    <Analytics />
   </body>
 </html>
