@@ -1,21 +1,19 @@
 ---
 import { getLangFromUrl, useTranslations, localizedPath } from '../i18n/ui';
 import LangSwitch from './LangSwitch.astro';
-import { Image } from 'astro:assets';
-import logo from '../assets/Vlakkevlekkelooszonderachtergrond.png';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
 <header class="border-b border-[color:var(--color-brand-line)]">
-  <div class="mx-auto max-w-6xl pl-4 pr-6 lg:pl-6 lg:pr-10 py-5 flex items-center justify-between">
+  <div class="mx-auto max-w-6xl px-6 lg:px-10 py-5 flex items-center justify-between">
     <a
       href={localizedPath(lang, '/')}
-      class="flex items-center"
+      class="font-display text-xl tracking-tight"
       aria-label="Vlekkeloos home"
     >
-      <Image src={logo} alt="Vlekkeloos" height={128} class="h-14 md:h-16 w-auto" />
+      vlekkeloos
     </a>
 
     <nav class="hidden md:flex items-center gap-8 text-sm">

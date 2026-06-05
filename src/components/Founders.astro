@@ -1,8 +1,5 @@
 ---
 import { getLangFromUrl, useTranslations } from '../i18n/ui';
-import { Image } from 'astro:assets';
-import founder1 from '../assets/founder-1.jpg';
-import founder2 from '../assets/founder-2.jpg';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -42,21 +39,14 @@ const stats = [
         </dl>
       </div>
 
+      <!-- Placeholder portraits — swap for real photos when shoot is done -->
       <div class="grid grid-cols-2 gap-3 md:gap-4">
-        <figure class="relative aspect-[3/4] rounded-[12px] overflow-hidden">
-          <Image src={founder1} alt={`Rick Kops, ${t('founders.role').toLowerCase()} van Vlekkeloos`} width={900} height={1200} class="w-full h-full object-cover" />
-          <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent px-3 py-3 text-white">
-            <span class="block text-sm font-medium leading-tight">Rick Kops</span>
-            <span class="block text-xs text-white/80">{t('founders.role')}</span>
-          </figcaption>
-        </figure>
-        <figure class="relative aspect-[3/4] rounded-[12px] overflow-hidden mt-6 md:mt-10">
-          <Image src={founder2} alt={`Wisse Seunnenga, ${t('founders.role').toLowerCase()} van Vlekkeloos`} width={900} height={1200} class="w-full h-full object-cover" />
-          <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent px-3 py-3 text-white">
-            <span class="block text-sm font-medium leading-tight">Wisse Seunnenga</span>
-            <span class="block text-xs text-white/80">{t('founders.role')}</span>
-          </figcaption>
-        </figure>
+        <div class="aspect-[3/4] bg-[color:var(--color-brand-canvas)] rounded-[12px] flex items-end p-4 text-xs text-[color:var(--color-brand-muted)]">
+          Founder 1
+        </div>
+        <div class="aspect-[3/4] bg-[color:var(--color-brand-canvas)] rounded-[12px] flex items-end p-4 text-xs text-[color:var(--color-brand-muted)] mt-6 md:mt-10">
+          Founder 2
+        </div>
       </div>
     </div>
   </div>
