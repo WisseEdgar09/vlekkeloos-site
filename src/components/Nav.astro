@@ -1,6 +1,8 @@
 ---
 import { getLangFromUrl, useTranslations, localizedPath } from '../i18n/ui';
 import LangSwitch from './LangSwitch.astro';
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -10,10 +12,10 @@ const t = useTranslations(lang);
   <div class="mx-auto max-w-6xl px-6 lg:px-10 py-5 flex items-center justify-between">
     <a
       href={localizedPath(lang, '/')}
-      class="font-display text-xl tracking-tight"
+      class="flex items-center"
       aria-label="Vlekkeloos home"
     >
-      vlekkeloos
+      <Image src={logo} alt="Vlekkeloos" height={40} class="h-9 w-auto" />
     </a>
 
     <nav class="hidden md:flex items-center gap-8 text-sm">
